@@ -1,0 +1,95 @@
+#SmartProxy Test app.config -- only template should be committed
+src/Canon.SmartProxy.IntegrationTests/[Aa]pp.config
+
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+#node files 
+src/ui/node_modules/*
+
+#Visual Studio files
+*.[Oo]bj
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+*.orig
+src/.vs/config/applicationhost.config
+soapui*
+ipch/
+[Oo]bj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
+
+#MonoDevelop
+*.pidb
+*.userprefs
+
+#Tooling
+_dotCover*/
+_dotTrace*/
+_ReSharper*/
+*.dotCover
+*.resharper
+[Tt]est[Rr]esult*
+*.sass-cache
+
+#output files
+out/
+
+#Project files
+
+# Office Temp Files
+~$*
+
+# vim Temp Files
+*~
+
+#NuGet
+packages/
+*.nupkg
+
+# visual studio database projects
+*.dbmdl
+
+#Test files
+*.testsettings
+
+#Ignore email files delivered to specified pickup directory
+*.eml
+
+#Allow NuGet.exe (do not ignore)
+!NuGet.exe
+
+#Ignore WebDeploy publish profiles
+*.Publish.xml
+
+#Ignore Azure build csdef & Pubxml files
+ServiceDefinition.build.csdef
+*.azurePubxml
+
+#Allow ReSharper .DotSettings (for non-namespace-provider properties)
+!*.csproj.DotSettings
+/**/ReferencedAssemblies/**/*.metagen
+/**/ReferencedAssemblies/**/*.pdb
+src/Database/Package/Canon.Migration.Canon.dacpac
+
