@@ -1,0 +1,217 @@
+G.ro.me APIs & Relevant Use Cases 
+*********************************
+
+GET api/Menu/{StartDate}
+------------------------
+
+Description: Gets the weekly menu from the specified start date 
+
+Response: 
+[
+	{
+		"date" : "2017-04-14",
+		"meal_number" : 1,
+		"dish_id" : 12,
+		"dish_name" : "Oats"
+	},
+	{
+		"date" : "2017-04-14",
+		"meal_number" : 1,
+		"dish_id" : 7		,
+		"dish_name" : "Tacos"
+	},
+	{
+		"date" : "2017-04-14",
+		"meal_number" : 2,
+		"dish_id" : 5,
+		"dish_name" : "Pesto Pasta"
+	},
+	{
+		"date" : "2017-04-14",
+		"meal_number" : 3,
+		"dish_id" : 2,
+		"dish_name" : "Sauted Veggies"
+	},
+	{
+		"date" : "2017-04-15",
+		"meal_number" : 1,
+		"dish_id" : 20,
+		"dish_name" : "French Toast"		
+	},
+	{
+		"date" : "2017-04-15",
+		"meal_number" : 2,
+		"dish_id" : 17,
+		"dish_name" : "Fried Rice"
+	},
+	{
+		"date" : "2017-04-15",
+		"meal_number" : 3,
+		"dish_id" : 28,
+		"dish_name" : "French Onion Soup"		
+	},
+	{
+		"date" : "2017-04-15",
+		"meal_number" : 3,
+		"dish_id" : 0,
+		"dish_name" : "Eat out"		
+	}
+]
+
+Relevant Use Cases: 
+#1. As a user, I need to specify a date for weekly grocery shopping so G.ro.me can help me plan out my weekly menu from the next day onwards.
+- [StartDate = Today + 1]
+
+#2. As a user, I need to be able to navigate the weekly menu daily or weekly from the current start date so I can review future and past weekly menus 
+- When Navigate = Weekly AND left arrow icon is clicked	: StartDate = current StartDate - 7
+- When Navigate = Weekly AND right arrow icon is clicked: StartDate = current StartDate + 7
+- When Navigate = Daily AND left arrow icon is clicked	: StartDate = current StartDate - 1
+- When Navigate = Daily AND right arrow icon is clicked	: StartDate = current StartDate + 1
+
+********************************************************************************************
+
+GET api/Dishes
+--------------
+
+Description: Gets all dishes optionally filtered by MealType 
+
+Query String Params: 
+- MealType
+
+Response:
+[
+    { 
+        "meal_type" : "Breakfast",
+        "dishes" : [
+                    {
+                        "id" : 1, 
+                        "name" : "Oats"
+                    },
+                    {
+                        "id" : 2, 
+                        "name" : "Poha"
+                    },
+                    {
+                        "id" : 3, 
+                        "name" : "Sevaiyaan"
+                    },
+                    {
+                        "id" : 4, 
+                        "name" : "Daliya"
+                    }
+                ]
+    },
+    {
+        "meal_type" : "Appetizer",
+        "dishes" : [
+                    {
+                        "id" : 11, 
+                        "name" : "Paneer Burji"
+                    },
+                    {
+                        "id" : 21, 
+                        "name" : "Gobi Parantha"
+                    },
+                    {
+                        "id" : 31, 
+                        "name" : "Fried Rice"
+                    }
+                ]
+    },
+    {
+        "meal_type" : "Entree",
+        "dishes" : [
+                    {
+                        "id" : 111, 
+                        "name" : "Sweet Corn Soup"
+                    },
+                    {
+                        "id" : 211, 
+                        "name" : "Pesto Pasta"
+                    },
+                    {
+                        "id" : 311, 
+                        "name" : "Sauted Veggies"
+                    }
+                ]
+    }
+]
+
+Relevant Use Cases: 
+#1. As a user, I need to be able to view a list of dishes categorized by meal type so I can select dishes for my weekly menu. 
+Accepted values: Breakfast, Appetizer, Entree, Dessert
+
+********************************************************************************************
+
+PUT api/Menu 
+------------
+
+Description: Saves the planned dish(s) for each meal for each day 
+
+Body: 
+[
+	{
+		"date" : "2017-04-14",
+		"meal_number" : 1,
+		"dish_id" : 12,
+		"dish_name" : "Oats"
+	},
+	{
+		"date" : "2017-04-14",
+		"meal_number" : 1,
+		"dish_id" : 7		,
+		"dish_name" : "Tacos"
+	},
+	{
+		"date" : "2017-04-14",
+		"meal_number" : 2,
+		"dish_id" : 5,
+		"dish_name" : "Pesto Pasta"
+	},
+	{
+		"date" : "2017-04-14",
+		"meal_number" : 3,
+		"dish_id" : 2,
+		"dish_name" : "Sauted Veggies"
+	},
+	{
+		"date" : "2017-04-15",
+		"meal_number" : 1,
+		"dish_id" : 20,
+		"dish_name" : "French Toast"		
+	},
+	{
+		"date" : "2017-04-15",
+		"meal_number" : 2,
+		"dish_id" : 17,
+		"dish_name" : "Fried Rice"
+	},
+	{
+		"date" : "2017-04-15",
+		"meal_number" : 3,
+		"dish_id" : 28,
+		"dish_name" : "French Onion Soup"		
+	},
+	{
+		"date" : "2017-04-15",
+		"meal_number" : 3,
+		"dish_id" : 0,
+		"dish_name" : "Eat out"		
+	}
+]
+
+Relevant Use Cases: 
+#1. As a user, I need to be able 'save' the weekly menu so I can review it at a later time 
+
+********************************************************************************************
+
+GET api/Groceries/{date}
+------------------------
+
+Description:
+
+Response:
+{
+}
+
+
