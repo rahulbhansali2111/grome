@@ -3,8 +3,6 @@
 	[Id] INT NOT NULL IDENTITY (1,1), 
 	[DishId] INT NOT NULL,
 	[TagName] VARCHAR(100) NOT NULL,
-	[RecordCreated]	DATETIMEOFFSET NOT NULL CONSTRAINT [DF_dbo_DishTags_RecordCreated] DEFAULT SYSDATETIMEOFFSET(),
-	[RecordModified] DATETIMEOFFSET NOT NULL CONSTRAINT [DF_dbo_DishTags_RecordModified] DEFAULT SYSDATETIMEOFFSET(),
 
 	CONSTRAINT [PK_dbo_DishTags_Id] PRIMARY KEY (Id),
 	CONSTRAINT [UQ_dbo_DishTags_DishId_TagName] UNIQUE (DishId, TagName),
@@ -41,20 +39,4 @@ EXECUTE sp_addextendedproperty
 	@level0type = N'SCHEMA', @level0name = N'dbo', 
 	@level1type = N'TABLE', @level1name = N'DishTags', 
 	@level2type = N'COLUMN', @level2name = N'TagName';
-GO
-
-EXECUTE sp_addextendedproperty 
-	@name = N'MS_Description', 
-	@value = N'The date and time (database time) at which this record was first created.', 
-	@level0type = N'SCHEMA', @level0name = N'dbo', 
-	@level1type = N'TABLE', @level1name = N'DishTags', 
-	@level2type = N'COLUMN', @level2name = N'RecordCreated';
-GO
-
-EXECUTE sp_addextendedproperty 
-	@name = N'MS_Description', 
-	@value = N'The date and time (database time) at which this record was last modified.', 
-	@level0type = N'SCHEMA', @level0name = N'dbo', 
-	@level1type = N'TABLE', @level1name = N'DishTags', 
-	@level2type = N'COLUMN', @level2name = N'RecordModified';
 GO

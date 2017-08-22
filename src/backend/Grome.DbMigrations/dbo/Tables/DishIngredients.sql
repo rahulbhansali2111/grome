@@ -4,8 +4,6 @@
     [DishId] INT NOT NULL,
 	[IngredientId] INT NOT NULL, 
 	[QtyPerServing] DECIMAL(4,2) NOT NULL CONSTRAINT [DF_dbo_DishIngredients_QtyPerServing] DEFAULT 1.00,
-	[RecordCreated]	DATETIMEOFFSET NOT NULL CONSTRAINT [DF_dbo_DishIngredients_RecordCreated] DEFAULT SYSDATETIMEOFFSET(),
-	[RecordModified] DATETIMEOFFSET NOT NULL CONSTRAINT [DF_dbo_DishIngredients_RecordModified] DEFAULT SYSDATETIMEOFFSET(),
 
 	CONSTRAINT [PK_dbo_DishIngredients_Id] PRIMARY KEY (Id),
 	CONSTRAINT [UQ_dbo_DishIngredients_DishId_IngredientId] UNIQUE (DishId, IngredientId),
@@ -51,20 +49,4 @@ EXECUTE sp_addextendedproperty
 	@level0type = N'SCHEMA', @level0name = N'dbo', 
 	@level1type = N'TABLE', @level1name = N'DishIngredients', 
 	@level2type = N'COLUMN', @level2name = N'QtyPerServing';
-GO
-
-EXECUTE sp_addextendedproperty 
-	@name = N'MS_Description', 
-	@value = N'The date and time (database time) at which this record was first created.', 
-	@level0type = N'SCHEMA', @level0name = N'dbo', 
-	@level1type = N'TABLE', @level1name = N'DishIngredients', 
-	@level2type = N'COLUMN', @level2name = N'RecordCreated';
-GO
-
-EXECUTE sp_addextendedproperty 
-	@name = N'MS_Description', 
-	@value = N'The date and time (database time) at which this record was last modified.', 
-	@level0type = N'SCHEMA', @level0name = N'dbo', 
-	@level1type = N'TABLE', @level1name = N'DishIngredients', 
-	@level2type = N'COLUMN', @level2name = N'RecordModified';
 GO

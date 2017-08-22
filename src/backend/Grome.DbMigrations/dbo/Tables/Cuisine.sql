@@ -1,12 +1,10 @@
 ﻿CREATE TABLE [dbo].[Cuisine]
 (
 	[Id] INT NOT NULL IDENTITY (1,1), 
-    [CuisineName] VARCHAR(100) NOT NULL,
-	[RecordCreated]	DATETIMEOFFSET NOT NULL CONSTRAINT [DF_dbo_Cuisine_RecordCreated] DEFAULT SYSDATETIMEOFFSET(),
-	[RecordModified] DATETIMEOFFSET NOT NULL CONSTRAINT [DF_dbo_Cuisine_RecordModified] DEFAULT SYSDATETIMEOFFSET(),
+    [Name] VARCHAR(100) NOT NULL,
  
 	CONSTRAINT [PK_dbo_Cuisine] PRIMARY KEY (Id),
-	CONSTRAINT [UQ_dbo_Cuisine_CuisineName] UNIQUE (CuisineName)
+	CONSTRAINT [UQ_dbo_Cuisine_CuisineName] UNIQUE ([Name])
 )
 GO 
 
@@ -30,21 +28,5 @@ EXECUTE sp_addextendedproperty
 	@value = N'Name of the Cuisine', 
 	@level0type = N'SCHEMA', @level0name = N'dbo', 
 	@level1type = N'TABLE', @level1name = N'Cuisine', 
-	@level2type = N'COLUMN', @level2name = N'CuisineName';
-GO
-
-EXECUTE sp_addextendedproperty 
-	@name = N'MS_Description', 
-	@value = N'The date and time (database time) at which this record was first created.', 
-	@level0type = N'SCHEMA', @level0name = N'dbo', 
-	@level1type = N'TABLE', @level1name = N'Cuisine', 
-	@level2type = N'COLUMN', @level2name = N'RecordCreated';
-GO
-
-EXECUTE sp_addextendedproperty 
-	@name = N'MS_Description', 
-	@value = N'The date and time (database time) at which this record was last modified.', 
-	@level0type = N'SCHEMA', @level0name = N'dbo', 
-	@level1type = N'TABLE', @level1name = N'Cuisine', 
-	@level2type = N'COLUMN', @level2name = N'RecordModified';
+	@level2type = N'COLUMN', @level2name = 'Name';
 GO
